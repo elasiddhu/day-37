@@ -1,0 +1,42 @@
+
+Database:Task2
+
+Collections:
+codekata
+tt
+mm
+companies
+
+
+
+Questions and Queries
+
+1. Find all the topics and tasks which are thought in the month of October - db.tt.find({schedule:"October"},{topics:1,tasks:1})
+
+
+
+2. Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020 - db.companies.find({date:{$gte:ISODate("2022-10-15T14:10:30Z"),$lte:ISODate("2022-10-31T14:10:30Z")}})
+
+
+
+3. Find all the company drives and students who are appeared for the placement  - db.companies.find({
+...     $and:[
+...
+...        {company:{$exists:true}},
+...        {student:{$exists:true}}
+...
+... ]},{company:1,student:1}).pretty()
+
+
+
+4. Find the number of problems solved by the user in codekata - db.codekata.find({})
+
+
+
+5. Find all the mentors with who has the mentee's count more than 15 - db.mm.find().pretty()
+
+
+ 
+6. Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020 - 
+
+db.tt.find({date:{$gte:ISODate("2022-10-15T14:10:30Z"), $lte:ISODate("2022-10-31T14:10:30Z")}},{users_absent:1,task_notsubmitted:1})
